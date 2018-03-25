@@ -1,0 +1,8 @@
+{% set comments = craft.comments.all({
+    userId: currentUser.id,
+    status: 'approved'
+}) %}
+
+{% for comment in comments %}
+    {{ comment.comment }}
+{% endfor %}

@@ -1,0 +1,32 @@
+{% set label = block.fieldLabel %}
+{# Set the field’s value to the user’s submitted value if the form has failed validation #}
+{% set value = message is defined and message ? message.messageFields[label] : "" %}
+{# Use the Matrix block type to set the type of field (i.e. tel, text, etc.) #}
+{% set type = block.type ?? "text" %}
+{# Generate a random id so that clicking the field’s label focusses the field #}
+{% set id = "f_" ~ random() %}
+
+<label for="{{ id }}">{{ label }}</label>
+
+{# If `message` exists it has been returned from the plugin, pass in each field’s `message` key to see if the field failed to validate #}
+{% if message is defined %}
+    {% for error in message.getErrors(label) %}
+        <div class="error">{{ error }}</div>
+    {% endfor %}
+{% endif %}
+
+{% if block.fieldInstructions | length %}
+    {{ block.fieldInstructions }}
+{% endif %}
+
+<label for="{{ id }}" class="button file-button">Choose File</label>
+<input
+    value="{{ value }}"
+    name="message[{{ label }}]"
+    class="show-for-sr"
+    id="{{ id }}"
+    type="{{ type }}"
+    {% if block.fieldRequired %}
+        required
+    {% endif %}
+/>

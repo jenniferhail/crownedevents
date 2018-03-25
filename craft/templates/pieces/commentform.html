@@ -1,0 +1,6 @@
+{% set params = {
+	order: 'dateCreated asc',
+	status: 'approved',
+} %}
+
+{{ craft.comments.form(entry.id, params) }}

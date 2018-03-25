@@ -1,0 +1,10 @@
+{% set ctaLink = block.buttonLink.first() %}
+
+<div class="row call-to-action text-center align-center">
+	<div class="column small-12 medium-8 large-5">
+		<h1>{{ block.text }}</h1>
+		{% if ctaLink %}
+			<a href="{{ ctaLink.url }}" class="button">{{ block.buttonText }}</a>
+		{% endif %}
+	</div>
+</div>

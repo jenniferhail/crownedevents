@@ -1,0 +1,146 @@
+.blog .content-area {
+    padding-bottom: 0;
+}
+.blog-grid {
+	margin-bottom: $global-margin;
+}
+.blog-grid-item {
+	padding: 0 8%;
+	margin-bottom: 8em;
+	@media print, screen and (min-width: 40em) {
+		&:first-child {
+			margin-top: 10em;
+		}
+	}
+	&:last-child {
+		margin-bottom: 0;
+	}
+	img {
+		margin-bottom: 2rem;
+	}
+}
+.blog_preview {
+	padding: 0 1.25em;
+}
+h3 a,
+.blog_header h3 a,
+.blog_categories a {
+	color: $dark-grey;
+}
+@media print, screen and (min-width: 64em) {
+.blog_date,
+.blog_share {
+    padding-top: 3em;
+    padding-bottom: 0;
+}
+}
+.blog_date,
+.blog_share {
+    padding-bottom: 3em;
+}
+.entry-text {
+	clear: both;
+	@media print, screen and (min-width: 40em) {
+		padding: 0 2em 0;
+	}
+	@media print, screen and (min-width: 64em) {
+		padding: 0 4em 4em;
+	}
+}
+.blog_comment_number {
+	@media print, screen and (min-width: 64em) {
+		padding: 0 0 4em;
+	}
+}
+
+.entry {
+	clear:both;
+	.content {
+		margin-bottom: 5em;
+	}
+	.entry-blockquote {
+		margin-bottom: 3em;
+	}
+	.entry-image {
+		.caption {
+			margin-top:0.7em;
+			font-size:0.7em;
+		}
+	}
+	.entry-twoImages .column {
+		&:first-child {
+			padding-left: 0;
+			padding-right: 3%
+		}
+		&:last-child {
+			padding-right: 0;
+			padding-left: 3%;
+		}
+	}
+	.entry-image-center {
+		float: none;
+		width: 100%;
+		padding: 0;
+		// margin-bottom: 0;
+	}
+}
+
+.blog-link {
+	h2 {
+		font-size: 1.5em;
+	}
+}
+
+.blog_related {
+	background-color: $light-grey;
+	margin-top: 1em;
+	padding-bottom: 0.5em;
+	h3 {
+		margin-top: 1em;
+	}
+}
+.category-title {
+    margin-bottom: $global-margin;
+}
+@media print, screen and (min-width: 40em) {
+	.category-title {
+	    position: relative;
+	    bottom: -2.5em;
+	    margin-bottom: 0;
+	}
+}
+.blog_post_related {
+    margin-right: 1em;
+    margin-left: 1em;
+	img {
+		margin-bottom: 2em;
+	}
+	.related_preview {
+		padding: 0 1.25em;
+		h3  {
+			margin-bottom: 1em;
+			a {
+				color: $dark-grey;
+			}
+		}
+		.link-underline {
+			margin-top: 1.5em;
+		}
+	}
+	@media print, screen and (max-width: 63.9375em) {
+		padding-bottom: 3em;
+	}
+}
+
+table {
+    border-collapse: inherit;
+	tbody {
+		tr:nth-child(2n) {
+			background-color: transparent;
+		}
+		td, th {
+			padding: 0rem 2rem .625rem;
+			width: 50%;
+		}
+	}
+}

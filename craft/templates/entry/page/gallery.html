@@ -1,0 +1,17 @@
+{% set blockImages = block.gallery %}
+
+{# <div class="row align-center"> #}
+
+	<div id="masonry-grid" class="gallery-grid">
+
+		{% for image in blockImages %}
+
+			<div class="masonry-item small-12 medium-6 large-4 gallery-item">
+				<img src="{{ image.url }}" alt="{{ image.title }}">
+			</div>
+
+		{% endfor %}
+
+	</div>
+
+{# </div> #}

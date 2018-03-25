@@ -1,0 +1,21 @@
+{% extends "matrix/default" %}
+
+{% block blockContent %}
+
+{% set imageLeft = block.leftImage.first() %}
+{% set imageRight = block.rightImage.first() %}
+
+<div class="column">
+	<img src="{{ imageLeft.url }}" alt="{{ imageLeft.title }}" />
+{# 	{% if block.caption %}
+		<p class="caption">{{ block.caption }}</p>
+	{% endif %} #}
+</div>
+<div class="column">
+	<img src="{{ imageRight.url }}" alt="{{ imageRight.title }}" />
+{# 	{% if block.caption %}
+		<p class="caption">{{ block.caption }}</p>
+	{% endif %} #}
+</div>
+
+{% endblock %}

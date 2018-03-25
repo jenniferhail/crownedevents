@@ -1,0 +1,23 @@
+{# {% include 'entry/forms/default' %} #}
+
+<div class="row align-center">
+
+	<div class="column small-12 medium-6">
+
+		{% set link = block.addForm.first() %}
+
+		{% if link | length %}
+
+			{% set formID = link.id %}
+
+			{% for entry in craft.entries.section('forms').id(formID) %}
+
+				{% include "pieces/form" %}
+
+			{% endfor %}
+
+		{% endif %}
+
+	</div>
+
+</div>

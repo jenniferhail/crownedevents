@@ -1,0 +1,15 @@
+<div class="row testimonial text-center align-center">
+	<div class="column small-12 medium-8 large-6">
+		<div class="testimonial-quote">
+			{{ block.testimonial }}
+		</div>
+
+		{% set link = block.linkUrl.first() %}
+		{% if link | length %}
+			<div class="link-underline">
+				<a href="{{ link.getUrl() }}">{{ block.linkText }}</a>
+			</div>
+		{% endif %}
+	</div>
+</div>
+

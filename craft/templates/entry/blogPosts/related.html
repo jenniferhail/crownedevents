@@ -1,0 +1,55 @@
+{% set category = entry.categories.first() %}
+{% set entries = craft.entries.relatedTo(category).limit(3).id('not ' ~ entry.id) %}
+
+{% for entry in entries %}
+
+	{% if entry.excerpt %}
+
+		<div class="column blog_post_related small-12 medium-5 large-3 text-center">
+
+			{% if entry.featuredImage.first() %}
+				{% set asset = entry.featuredImage.first() %}
+				<div class="entry image thumb">
+					<a href="{{ entry.url }}"><img src="{{ asset.getUrl('square') }}" width="{{ asset.getWidth('square') }}" height="{{ asset.getHeight('square') }}" /></a>
+				</div>
+			{% endif %}
+
+			<div class="related_preview">
+				<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
+
+				{{ entry.excerpt|length > 88 ? entry.excerpt|striptags('<p>')|slice(3,88) ~ '...' : entry.excerpt }}
+
+				<div class="link-underline">
+					<a href="{{ entry.url }}">Read More</a>
+				</div>
+			</div>
+
+		</div>
+
+	{% endif %}
+
+{% endfor %}
+
+{# {% for relatedEntry in craft.entries({
+	section: 'blog',
+	relatedTo: entry.categories.first(),
+	limit: 3
+}) %}
+
+	{% if entry.excerpt %}
+
+		{% if entry.featuredImage.first() %}
+			<div class="entry image thumb">
+				<img src="{{ entry.featuredImage.first().url }}" />
+			</div>
+		{% endif %}
+
+		<h2><a href="{{ entry.url }}">{{ entry.title }}</a></h2>
+
+		{{ entry.excerpt }}
+
+		<p><a href="{{ entry.url }}">Read More</a></p>
+
+	{% endif %}
+
+{% endfor %} #}

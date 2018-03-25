@@ -1,0 +1,14 @@
+{% extends "matrix/default" %}
+
+{% block blockContent %}
+
+{% set image = block.image.first() %}
+
+<div class="entry-image">
+	{% if image %}<img src="{{ image.url }}" alt="{{ image.title }}" />{% endif %}
+	{% if block.caption %}
+		<p class="caption">{{ block.caption }}</p>
+	{% endif %}
+</div>
+
+{% endblock %}

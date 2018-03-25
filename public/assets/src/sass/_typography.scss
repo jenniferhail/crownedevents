@@ -1,0 +1,148 @@
+body {
+	font-weight: $font-weight;
+	font-family: $body-font;
+	font-size: $font-size;
+}
+
+p {
+	line-height: 1.5;
+}
+
+.blog_date,
+.blog_comment_number,
+.blog_categories,
+.blog_share,
+.button,
+a.button,
+.newsletter-form p,
+footer p,
+input[type="submit"],
+.testimonial-image .caption {
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	font-size: 0.65rem;
+	font-weight: 300;
+	line-height: 22px;
+}
+footer p {
+	font-size: 0.5em;
+	line-height: 2em;
+}
+
+h1 {
+	color: $wine;
+	font-family: $heading-font;
+	font-style: italic;
+	font-size: 1.25rem;
+	margin-bottom: 0;
+}
+h2 {
+	color: $wine;
+	font-family: $body-font;
+	font-size: 1rem;
+	font-weight: 300;
+	letter-spacing: 0.2rem;
+}
+h3 {
+	color: $dark-grey;
+	font-family: $heading-font;
+	font-size: 1.15rem;
+	margin-bottom: 1em;
+}
+h4 {
+	color: $dark-grey;
+	font-family: $heading-font;
+	font-size: 1rem;
+}
+
+.link-underline a {
+	color: $dark-grey;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    font-size: 0.65rem;
+    border-bottom: 1px solid $muted-blush;
+    padding-bottom: 0.5rem;
+}
+
+.column-section,
+.full-width-text {
+	ul {
+	    list-style: none;
+	    padding-left: 0;
+		> li {
+		    margin-left: 15px;
+		    &:before {
+			    content: "\2013";
+		        margin-left: -24px;
+			    padding-right: 15px;
+			}
+		}
+	}
+}
+
+blockquote {
+	text-align: center;
+	border-left: none;
+	font-weight: 400;
+	p, cite {
+		color: $wine;
+	}
+}
+
+.pagination {
+	.arrow {
+		color: $muted-blush;
+		&-left {
+			padding-right: 1em;
+		}
+		&-right {
+			padding-left: 1em;
+		}
+	}
+}
+
+// a {
+// 	color:rgb(252,61,33);
+// }
+
+// a:hover {
+// 	color: rgb(11,61,145);
+// }
+
+// h1 {
+// 	font-size: 3em;
+// 	// color: $vapor;
+// 	margin-bottom: 0;
+// 	padding-bottom: 0;
+// }
+
+// h2 {
+// 	// color: $smoke;
+
+// 	a {
+// 		color: inherit;
+// 	}
+// }
+// h3 {}
+// h4 {}
+// h5 {}
+
+// .header {
+// 	margin-top:2em;
+
+// 	ul.main-nav {
+// 		list-style-type:none;
+// 		margin-top:1em;
+// 			li {
+// 				float:left;
+// 				margin-left:1.5em;
+// 			}
+// 	}
+// }
+
+// .tagline {
+// 	// color: $monsoon;
+// 	font-size: 0.2 em;
+// 	letter-spacing: 0.1em;
+// 	text-transform: uppercase;
+// }

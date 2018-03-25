@@ -1,0 +1,24 @@
+<form class="newsletter-form" action="" method="POST">
+  {{ getCsrfInput() }}
+  <input type="hidden" name="action" value="mailchimpSubscribe/list/Subscribe">
+
+  <p>{{ newsletter.heading }}</p>
+
+  {% if mailchimpSubscribe is defined %}
+
+    {% if mailchimpSubscribe.success %}
+      <p>Thank you for signing up!</p>
+    {% endif %}
+
+    {% if (not mailchimpSubscribe.success) and (mailchimpSubscribe.errorCode!='1000') %}
+      <p>An error occured. Please try again.</p>
+    {% endif %}
+
+  {% endif %}
+
+  <div class="field-line">
+    {# <label{% if (mailchimpSubscribe is defined) and (mailchimpSubscribe.errorCode=='1000') %} class="error"{% endif %}>Email:</label> #}
+    <input type="text" name="email" value="{% if (mailchimpSubscribe is defined) and (not mailchimpSubscribe.success) %}{{ mailchimpSubscribe.values.email }}{% endif %}"/><input type="submit" name="" value="{% if newsletter.buttonText is defined %}{{ newsletter.buttonText }}{% else %}Subscribe{% endif %}"/>
+  </div>
+
+</form>

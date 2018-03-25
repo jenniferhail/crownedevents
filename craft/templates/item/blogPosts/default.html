@@ -1,0 +1,23 @@
+{% extends "item/default" %}
+
+{% block itemContent %}
+
+	{% if entry.excerpt %}
+
+		<div class="entry image full">
+			<a href="{{ entry.url }}"><img src="{{ entry.featuredImage.first().url }}" /></a>
+		</div>
+
+		<div class="blog_preview">
+			<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
+
+			{{ entry.excerpt }}
+
+			<div class="link-underline">
+				<a href="{{ entry.url }}">Read More</a>
+			</div>
+		</div>
+
+	{% endif %}
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% set label = block.fieldLabel %}
+{% set type = block.type ?? "checkbox" %}
+
+<label>
+    {{ label }}
+</label>
+
+{# If `message` exists it has been returned from the plugin, pass in each field’s `message` key to see if the field failed to validate #}
+{% if message is defined %}
+    {% for error in message.getErrors(label) %}
+        <div class="error">{{ error }}</div>
+    {% endfor %}
+{% endif %}
+
+{% if block.fieldInstructions | length %}
+    {{ block.fieldInstructions }}
+{% endif %}
+
+{% for option in block.fieldOptions %}
+    {# Generate a random id so that clicking the field’s label selects the field #}
+    {% set id = 'f_' ~ random()  %}
+    <input
+        type="{{ type }}"
+        {# 
+        # For checkboxes, make the name an array by adding []
+        # so multiple checkboxes may be selected
+        #}
+        name="message[{{ label }}]{{- (type == "checkbox" ? "[]") -}}"
+        id="{{ id }}"
+        value="{{ option.value }}"
+        {% if option.checked %}
+        checked
+        {% endif %}
+        {% if block.fieldRequired %}
+            required
+        {% endif %}
+    />
+    <label for="{{ id }}">
+        {{ option.label }}
+    </label>
+{% endfor %}

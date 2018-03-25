@@ -1,0 +1,39 @@
+// Styles for Mobile
+
+.left {
+	padding: 40px;
+}
+.right {
+	padding: 40px;
+}
+.text {
+	padding: 0px;
+	text-align: center;
+}
+.icon {
+	color: #840b34;
+	font-size: 30px;
+	padding: 0 10px;
+}
+
+// Styles for Desktop
+
+@media screen and (min-width: 801px) {
+	.container {
+		max-width: 1140px;
+		margin: 0 auto;
+		display: flex;
+		width: 100%;
+	}
+	.left {
+		width: 58%;
+	}
+	.right {
+		width: 42%;
+	}
+	.text {
+		text-align: left;
+		margin-top: 20px;
+		padding: 0px 150px 20px 0px;
+	}
+}

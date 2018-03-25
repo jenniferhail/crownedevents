@@ -1,0 +1,62 @@
+{#
+ # Homepage template
+ # ---------------
+ #
+ # When this template gets loaded, it will be because someone has accessed
+ # http://yoursite.com/ (without any URI). Craft checks to see if you have
+ # a Single section set to be the Homepage (as you do, by default), and
+ # loads the section’s Template (this file). A special ‘entry’ variable
+ # will already be set for you, assigned to the Homepage entry.
+ #
+ # It's worth noting that even if you didn't have a Homepage Single section,
+ # as long as this template remains at craft/templates/index.html, it
+ # would still be the one to get loaded when accessing http://yoursite.com/,
+ # albeit without an ‘entry’ variable already set for you.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% set heroImage = entry.heroImage.first() %}
+{% set title = entry.title %}
+
+{% extends "_layout" %}
+
+{% block header %}
+
+    <header{% if heroImage %} class="hero-full-screen fade-in one" style="background: url('{{ heroImage.url }}') 50% no-repeat; background-size: cover;"{% endif %}>
+    	{% include 'pieces/nav' %}
+    </header>
+
+{% endblock %}
+
+{# {% block header %}
+{{ parent() }}
+
+	{% if heroImage %}
+	    <div class="hero-full-screen" style="background: url('{{ heroImage.url }}') 50% no-repeat; background-size: cover;"></div>
+    {% endif %}
+
+{% endblock %} #}
+
+{% block content %}
+
+	{% for block in entry.pageContent.level(1) %}
+
+		{% include 'entry/page/' ~ block.type.handle with {block: block} only %}
+
+	{% endfor %}
+
+	{% if entry.heading %}
+		<div class="row text-center align-center">
+			<h1>{{ entry.heading }}</h1>
+		</div>
+	{% endif %}
+
+	{% for block in entry.testimonialGrid.level(1) %}
+
+		{% include 'entry/testimonials/' ~ block.type.handle with {block: block} only %}
+
+	{% endfor %}
+
+{% endblock %}

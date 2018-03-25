@@ -1,0 +1,55 @@
+{% set label = block["fieldLabel"] %}
+
+<label id="message[{{ label }}]_label" class="field" for="message[{{ label }}]" data-value="">
+
+    <span>{{ label }}</span>
+
+    <div id="message[{{ label }}]" class="psuedo_select" name="message[{{ label }}]">
+
+        <span class="selected"></span>
+
+        <ul id="message[{{ label }}]_options" class="options">
+
+            {% for option in block.fieldOptions %}
+
+                {% set value = option["value"] ?? "" %}
+                {% set label = option["label"] ?? "" %}
+
+                <li class="option" data-value="{{ value }}">{{ label }}</li>
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
+
+</label>
+
+{% set label = block["fieldLabel"] %}
+
+{#
+<label>
+    {{ label }}
+</label>
+
+<select name="message[{{ label }}]">
+    {% for option in block.fieldOptions %}
+        {% set value = option["value"] ?? "" %}
+        {% set label = option["label"] ?? "" %}
+        <option
+            value="{{ value }}"
+            {% if option["checked"] %}
+                selected
+            {% endif %}
+        >
+            {{ label }}
+        </option>
+    {% endfor %}
+</select>
+
+ If `message` exists it has been returned from the plugin, pass in each field’s `message` key to see if the field failed to validate
+{% if message is defined %}
+    {% for error in message.getErrors(label) %}
+        <div class="error">{{ error }}</div>
+    {% endfor %}
+{% endif %} #}

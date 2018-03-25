@@ -1,0 +1,33 @@
+<div class="row column-section align-center">
+
+	{% for column in block.children %}
+
+	{% set asset = column.image.first() %}
+
+		<div class="column small-12 medium-5">
+
+			{% if asset %}
+				<img src="{{ asset.getUrl('square') }}" width="{{ asset.getWidth('square') }}" height="{{ asset.getHeight('square') }}">
+			{% endif %}
+
+			{% if column.heading %}
+				<h3>{{ column.heading }}</h3><br/>
+			{% endif %}
+
+			{% if column.copy %}
+				{{ column.copy }}
+			{% endif %}
+
+			{% set link = column.linkUrl.first() %}
+
+			{% if link | length %}
+				<div class="link link-underline">
+					<a href="{{ link.getUrl() }}">{{ column.linkText }}</a>
+				</div>
+			{% endif %}
+
+		</div>
+
+	{% endfor %}
+
+</div>

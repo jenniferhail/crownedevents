@@ -1,0 +1,14 @@
+{% extends "matrix/default" %}
+
+{% block blockContent %}
+
+<table>
+	{% for row in block.creditsList %}
+		<tr>
+			<td class="text-right "><em>{{ row.service }} by</em></td>
+			<td class="text-left">{% if row.link %}<a href="{{ row.link }}" target="_blank">{% endif %}{{ row.name }}</a></td>
+		</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}

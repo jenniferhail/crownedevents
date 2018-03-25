@@ -1,0 +1,265 @@
+.logo svg {
+  max-width: 165px;
+}
+.logo-mark svg {
+  max-width: 80px;
+}
+.logo-white svg {
+  fill: $white;
+}
+.header-animation {
+  position: relative;
+}
+.tagline {
+	position: absolute;
+	left: 0;
+	padding-left: .9375rem;
+	h1 {
+		font-style: italic;
+	}
+}
+.hero-full-screen {
+	align-items: normal;
+  justify-content: normal;
+  height: 500px;
+  @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+    height: 650px;
+  }
+  @media screen and (min-width: 64em) {
+    height: 100vh;
+  }
+}
+.top-bar {
+  align-items: normal;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: transparent;
+}
+.menu-top {
+  padding: 0;
+}
+.menu-icon.dark {
+  width: 24px;
+  &:after {
+  	background: $wine;
+  	box-shadow: 0 7px 0 $wine, 0 14px 0 $wine;
+  }
+}
+
+// SVG
+.logo-white .cls-1 {
+  fill: $white;
+}
+
+// Social Links
+.social-icons {
+  margin-bottom: 2em;
+  a {
+    font-size: 1.25rem;
+    margin: 0 0.5em;
+  }
+}
+.header-icons {
+  margin: 1em 0;
+  @media screen and (min-width: 40em) {
+    margin: 4em 0;
+  }
+  a {
+    color: $white;
+  }
+}
+.footer-icons a {
+  color: $wine;
+}
+
+// Footer
+footer {
+  padding-top: 0;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+// Off-Screen Menu
+
+.offcanvas-full-screen {
+  position: fixed;
+  z-index: 1;
+  transition: -webkit-transform 0.75s ease-in-out;
+  transition: transform 0.75s ease-in-out;
+  transition: transform 0.75s ease-in-out, -webkit-transform 0.75s ease-in-out;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  background: rgba(232, 202, 194, 0.95%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+          transform: translateY(-100%);
+  overflow-y: auto;
+}
+
+[data-whatinput='mouse'] .offcanvas-full-screen {
+  outline: 0;
+}
+
+.offcanvas-full-screen.is-transition-overlap {
+  z-index: 10;
+}
+
+.offcanvas-full-screen.is-transition-overlap.is-open {
+  box-shadow: 0 0 10px rgba(10, 10, 10, 0.7);
+}
+
+.offcanvas-full-screen.is-open {
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.offcanvas-full-screen.is-open ~ .off-canvas-content {
+  -webkit-transform: translateY(100%);
+      -ms-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
+.offcanvas-full-screen.is-transition-push::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 1px;
+  box-shadow: 0 0 10px rgba(10, 10, 10, 0.7);
+  content: " ";
+}
+
+.offcanvas-full-screen.is-transition-overlap.is-open ~ .off-canvas-content {
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+}
+
+.offcanvas-full-screen-inner {
+  text-align: center;
+  height: 100vh;
+}
+
+#mainMenu {
+  margin: 0;
+  list-style-type: none;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+#mainMenu > li {
+  -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+
+[data-whatinput='mouse'] #mainMenu > li {
+  outline: 0;
+}
+
+#mainMenu > li > a {
+  display: block;
+  padding: 0.7rem 1rem;
+  color: $dark-grey;
+  opacity: 1;
+  font-family: $heading-font;
+  font-size: 1.75rem;
+  line-height: 1.75rem;
+}
+
+#mainMenu input,
+#mainMenu select,
+#mainMenu a,
+#mainMenu button {
+  margin-bottom: 0;
+}
+
+#mainMenu > li {
+  -webkit-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+  max-width: 100%;
+}
+
+#mainMenu > li > a {
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+#mainMenu a:hover {
+  opacity: 0.8;
+}
+
+.offcanvas-full-screen-close {
+  color: $white;
+  opacity: 1;
+  font-size: 3rem;
+}
+
+.offcanvas-full-screen-close:hover {
+  opacity: 0.8;
+}
+
+// Mobile Menu
+@media screen and (max-width: 900px) {
+  .logo-full,
+  .tagline {
+    display: none;
+  }
+  .logo-wine {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@media screen and (min-width: 901px) {
+  header {
+    .logo-wine {
+      z-index: 5;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease-in-out 1s, visibility 0.5s ease-in-out 1s;
+    }
+    .logo-full,
+    .tagline {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.5s ease-in-out 1s, visibility 0.5s ease-in-out 1s;
+    }
+    .is-stuck {
+      .logo-wine {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.5s ease 1s, visibility 0.5s ease-in-out 1s;
+      }
+      .logo-full,
+      .tagline {
+        z-index: -1;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease 1s, visibility 0.5s ease-in-out 1s;
+      }
+    }
+  }
+}

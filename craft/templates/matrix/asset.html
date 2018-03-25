@@ -1,0 +1,11 @@
+{% extends "matrix/default" %}
+
+{% block blockContent %}
+
+	{% set link = block.assetLink.first() %}
+
+	{% if link %}
+	    <input type="hidden" name="redirect" value="{{ link.url }}">
+	{% endif %}
+
+{% endblock %}

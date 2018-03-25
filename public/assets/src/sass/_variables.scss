@@ -1,0 +1,43 @@
+// Typography
+
+$font-style: normal;
+$font-variant: normal;
+$font-weight: 200;
+$font-color: #222;
+$font-size: 1rem;
+$line-height: 1.5;
+
+$heading-font: "essonnes-display", serif;
+$body-font: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+
+// Color Palette
+
+$wine: #612a38;
+$muted-blush: #eed0c8;
+$army-green: #575f4f;
+$dark-grey: #292a2a;
+$light-beige: #fbfcf2;
+$light-grey: #f4f4f4;
+
+$white: #ffffff;
+
+// Layout
+
+$global-margin: 3rem;
+
+// Breakpoints
+
+.row {
+	max-width: 90rem;
+	padding: 3%;
+	// padding: 4%;
+}
+
+// Small: Mobile
+// $mq-small: ;
+
+// Medium: Tablets
+// $mq-medium: ;
+
+// Large: Desktop & Larger
+// $mq-large: ;

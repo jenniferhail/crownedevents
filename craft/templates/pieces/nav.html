@@ -1,0 +1,64 @@
+{% set fullLogo = header.fullLogo.first() %}
+{% set logoMark = header.logoMark.first() %}
+{% set logoMarkWhite = header.whiteLogoMark.first() %}
+
+<div id="offcanvas-full-screen" class="offcanvas-full-screen" data-off-canvas data-transition="overlap">
+
+  <div class="offcanvas-full-screen-inner row align-center">
+
+
+    <div class="row menu-top small-12">
+      <div class="column text-left">
+        <picture class="logo-mark logo-white">
+          <a href="{{ siteUrl }}">{{ craft.inlin.er( logoMarkWhite.url , true ) | raw }}</a>
+        </picture>
+      </div>
+
+      <div class="column text-right">
+        <button class="offcanvas-full-screen-close" aria-label="Close menu" type="button" data-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+
+
+
+    <div class="column text-center align-center align-self-middle small-12">
+      {{ craft.amNav.getNav("mainMenu") }}
+    </div>
+
+    <div class="column text-center align-center align-self-bottom small-12">
+      <div class="social-icons header-icons">
+        {% include 'entry/social/icon' %}
+      </div>
+
+      <div class="align-center">
+        {% include 'pieces/newsletter' %}
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="off-canvas-content" data-off-canvas-content data-sticky-container>
+  <div class="top-bar row sticky" data-sticky data-options="marginTop:0;" data-top-anchor="1" data-sticky-on="small">
+    <div class="columns text-left header-animation">
+      <div class="tagline">
+        <h1>{{ header.taglineTop }}</h1>
+        <h2>{{ header.taglineBottom }}</h2>
+      </div>
+      <picture class="logo-mark logo-wine">
+        <a href="{{ siteUrl }}">{{ craft.inlin.er( logoMark.url , true ) | raw }}</a>
+      </picture>
+    </div>
+    <div class="columns text-center">
+      <picture class="logo-full">
+        <a href="{{ siteUrl }}" class="logo">{{ craft.inlin.er( fullLogo.url , true ) | raw }}</a>
+      </picture>
+    </div>
+    <div class="columns text-right">
+  		<button class="menu-icon dark" type="button" data-toggle="offcanvas-full-screen"></button>
+    </div>
+  </div>
+</div>

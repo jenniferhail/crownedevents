@@ -1,0 +1,52 @@
+{% extends "entry/default" %}
+
+{% set commentNumber = craft.comments.all({ elementId: entry.id, status: 'approved' }) | length %}
+
+{% block itemContent %}
+
+	<div class="blog_header text-center">
+
+		<h3 class="text-center"><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
+
+		<p class="blog_categories">{% for category in entry.categories %} <a href="{{ category.url }}">{{ category.title }}</a> {% endfor %}</p>
+
+	</div>
+
+	<div class="row">
+
+		<div class="column small-12 large-2 text-center">
+			<p class="blog_date">{{ entry.postDate | date('M jS') }}{# <br>{{ entry.postDate | date('Y') }} #}</p>
+		</div>
+
+
+		{{ parent() }}
+
+		<div class="column small-12 large-2 text-center">
+			<p class="blog_share">{{ entry.postDate | date('Y') }}</p>
+			{% include 'pieces/social-share' %}
+		</div>
+
+		<div class="column">
+		    <p class="text-center blog_comment_number"><a href="#ce-comments">{{ commentNumber }} comment{% if commentNumber != 1 %}s{% endif %}</a></p>
+		</div>
+
+	</div>
+
+</div>
+</div>
+</div>
+
+	<div class="row blog_related align-center">
+		<div class="column text-center small-12"><h3><em>Related Posts</em></h3></div>
+		<div class="row small-12 align-center">
+			{% include "entry/blogPosts/related" %}
+		</div>
+	</div>
+
+	<div id="ce-comments" class="blog_comments align-center">
+		{% include "pieces/commentform.html" %}
+	</div>
+
+	{# {% include "pieces/commentlist.html" %} #}
+
+{% endblock %}

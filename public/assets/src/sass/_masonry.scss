@@ -1,0 +1,27 @@
+$masonry-css-column-gap: $global-margin;
+
+.masonry-css {
+  column-count: 1;
+  column-gap: $masonry-css-column-gap;
+
+  @media screen and (min-width: 37.5em) {
+    column-count: 2;
+  }
+
+  @media screen and (min-width: 50em) {
+    column-count: 3;
+  }
+}
+
+.masonry-css-item {
+  break-inside: avoid;
+  margin-bottom: $masonry-css-column-gap;
+}
+
+#masonry-grid {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}

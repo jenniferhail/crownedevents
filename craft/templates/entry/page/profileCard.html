@@ -1,0 +1,29 @@
+{% set blockImage = block.image.first() %}
+
+<div class="row profile-card align-center">
+	{% if block.cardPosition == 'left' %}
+		<div class="column small-12 medium-5 large-4">
+			{% if blockImage %}
+				<img src="{{ blockImage.url }}">
+			{% endif %}
+		</div>
+		<div class="column small-12 medium-5 medium-offset-1 large-5 large-offset-1">
+			<h3>{{ block.firstName }}</h3>
+			<h2>{{ block.jobTitle }}</h2>
+			<br/>
+			{{ block.copy }}
+		</div>
+	{% elseif block.cardPosition == 'right' %}
+		<div class="column small-12 medium-5 large-5 small-order-2 medium-order-1">
+			<h3>{{ block.firstName }}</h3>
+			<h2>{{ block.jobTitle }}</h2>
+			<br/>
+			{{ block.copy }}
+		</div>
+		<div class="column small-12 medium-5 medium-offset-1 large-4 large-offset-1 small-order-1 medium-order-2">
+			{% if blockImage %}
+				<img src="{{ blockImage.url }}">
+			{% endif %}
+		</div>
+	{% endif %}
+</div>

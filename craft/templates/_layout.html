@@ -1,0 +1,64 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% if title is defined %}{{ title }} — {% endif %}{{ siteName }}</title>
+    <script src="https://use.typekit.net/mtw8fmm.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <link rel="stylesheet" href="{{ siteUrl }}assets/dist/css/main.css" />
+    {% for image in header.favicon %}
+      <link rel="icon" type="image/png" sizes="16x16" href="{{ image.url }}">
+    {% endfor %}
+    {% block head %}
+    {% endblock %}
+  </head>
+
+  <body class="{{ craft.request.getFirstSegment() | lcfirst | kebab }}">
+
+    {% block header %}
+      <header>
+        {% include 'pieces/nav' %}
+      </header>
+    {% endblock %}
+
+    <div class="row content-area fade-in one">
+      <div class="large-12 columns">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+
+    <footer class="row text-center align-center fade-in two">
+      {% include "pieces/footer" %}
+    </footer>
+
+    {% block footerScripts %}
+      <script src="{{ siteUrl }}assets/js/vendor/jquery.js"></script>
+      <script src="{{ siteUrl }}assets/js/vendor/foundation.min.js"></script>
+      <script src="{{ siteUrl }}assets/js/vendor/imagesloaded.pkgd.min.js"></script>
+      <script src="{{ siteUrl }}assets/js/vendor/masonry.pkgd.min.js"></script>
+      <script src="{{ siteUrl }}assets/js/vendor/instafeed.min.js"></script>
+      <script src="{{ siteUrl }}assets/js/app.js"></script>
+      <script>
+        $(document).foundation();
+
+        // init Masonry
+        var $grid = $('#masonry-grid').masonry({
+          itemSelector: '.masonry-item',
+          percentPosition: true
+          // columnWidth: '.grid-sizer'
+        });
+        // layout Masonry after each image loads
+        $grid.imagesLoaded().progress( function() {
+          $grid.masonry();
+        });
+
+        $(window).resize(function(){
+          $grid.masonry('reloadItems');
+        });
+      </script>
+    {% endblock %}
+
+  </body>
+</html>

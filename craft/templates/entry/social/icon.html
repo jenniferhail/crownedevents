@@ -1,0 +1,5 @@
+{% for block in socialMedia.socialMediaIcons.level(1) %}
+
+	<a href="{{ block.socialMediaLink }}" target="_blank"><i class="fa fa-{{ block.socialMediaName }}"></i></a>
+
+{% endfor %}

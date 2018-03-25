@@ -1,0 +1,56 @@
+{#
+ # Category template
+ # ---------------
+ #}
+
+{% extends "_layout" %}
+{% set title = category.title %}
+
+{% block header %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+{% set blogID = craft.entries.section('blog').first() %}
+{% set number = blogID.numberOfPosts %}
+{% set categoryPosts = craft.entries.section('blogPosts').relatedTo(category) %}
+
+	<div class="row">
+
+	{% set entryCount = categoryPosts|length %}
+
+	{% if entryCount == 0 %}
+
+		<div class="column small-12 text-center">
+			<h1>{{ category.title }}</h1></br>
+			<p>Oops! You've found a top secret page. We're busy writing brand new posts for this blog category, so check back soon to read them!</p>
+		</div>
+
+	</div>
+
+	{% else %}
+
+		<div class="column category-title small-12 medium-6 text-center"><h1>{{ category.title }}</h1></div>
+
+	</div>
+
+		<div id="masonry-grid" class="blog-grid text-center">
+
+			{% paginate categoryPosts.limit(number) as entries %}
+
+			{% for entry in entries %}
+				{% if entry.featuredImage.first() %}
+					<div class="masonry-item blog-grid-item small-12 medium-6">
+						{% include 'item' %}
+					</div>
+				{% endif %}
+			{% endfor %}
+
+		</div>
+
+		<div class="row align-center">{% include 'pieces/pagination' %}</div>
+
+	{% endif %}
+
+{% endblock %}

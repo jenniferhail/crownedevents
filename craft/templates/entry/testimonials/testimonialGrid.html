@@ -1,0 +1,38 @@
+<div id="masonry-grid" class="testimonial-grid text-center">
+
+{% for item in block.children %}
+
+{% set blockImage = item.image.first() %}
+{% set link = item.linkUrl.first() %}
+
+	<div class="masonry-item testimonial-grid-item small-12 medium-6">
+
+		<div class="testimonial-image">
+			{% if blockImage %}
+				<img src="{{ blockImage.getUrl('square') }}" width="{{ blockImage.getWidth('square') }}" height="{{ blockImage.getHeight('square') }}" alt"{{ blockImage.title }}">
+				{% if link | length %}
+					<div class="caption text-center"><p>See Their Wedding</p></div>
+					<a href="{{ link.getUrl() }}"></a>
+				{% endif %}
+			{% endif %}
+		</div>
+
+		<div class="testimonial_preview">
+			<h3>{{ item.couplesName }}</h3>
+			<br/>
+			<div class="testimonial-quote">
+				{{ item.testimonial }}
+			</div>
+
+			{% if link | length %}
+				<div class="link-underline">
+					<a href="{{ link.getUrl() }}">{{ item.linkText }}</a>
+				</div>
+			{% endif %}
+		</div>
+
+	</div>
+
+{% endfor %}
+
+</div>

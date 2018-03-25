@@ -1,0 +1,21 @@
+{% set label = block.fieldLabel %}
+{# Set the field’s value to the user’s submitted value if the form has failed validation #}
+{% set value = message is defined and message ? message.messageFields[label] : "" %}
+{# Use the Matrix block type to set the type of field (i.e. tel, text, etc.) #}
+{% set type = block.type ?? "text" %}
+{# Generate a random id so that clicking the field’s label focusses the field #}
+{% set id = "f_" ~ random() %}
+
+{% if block.fieldInstructions | length %}
+    {{ block.fieldInstructions }}
+{% endif %}
+
+<input
+    value="{{ value }}"
+    name="message[{{ label }}]"
+    id="{{ id }}"
+    type="{{ type }}"
+    {% if block.fieldRequired %}
+        required
+    {% endif %}
+/>

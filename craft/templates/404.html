@@ -1,0 +1,41 @@
+{#
+ # 404 template
+ # ------------
+ #
+ # This template is loaded whenever Craft cannot figure out how to
+ # respond to an incoming request. No setup is involved to get your
+ # 404 page working; you just need to call it 404.html and put it
+ # at the root of your craft/templates/ folder.
+ #
+ # You can also create 400.html, 403.html, 500.html, and 503.html
+ # templates if you’d like. If Craft can’t find an error template
+ # to match the error code, it will just use the one in
+ # craft/app/templates/ instead.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% set entry = craft.entries.section( 'error' ).first() %}
+{% set heroImage = entry.heroImage.first() %}
+{% set title = entry.title %}
+
+{% extends "_layout" %}
+
+{% block header %}
+
+    <header{% if heroImage %} class="hero-full-screen fade-in one" style="background: url('{{ heroImage.url }}') 50% no-repeat; background-size: cover;"{% endif %}>
+    	{% include 'pieces/nav' %}
+    </header>
+
+{% endblock %}
+
+{% block content %}
+
+	{% for block in entry.pageContent.level(1) %}
+
+		{% include 'entry/page/' ~ block.type.handle with {block: block} only %}
+
+	{% endfor %}
+
+{% endblock %}
